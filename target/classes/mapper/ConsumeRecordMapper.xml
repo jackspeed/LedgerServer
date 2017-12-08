@@ -20,7 +20,7 @@
     <!--插入记录-->
     <insert id="add" parameterType="com.ycj.ledger.domain.ConsumeRecord">
         INSERT INTO t_consume_record (id, user_id, status, consume_date, consume_money,create_date)
-        VALUES (#{id},#{userId},#{status},#{consumeDate},#{consumeMoney},NOW())
+        VALUES (#{id},#{userId},0,#{consumeDate},#{consumeMoney},NOW())
     </insert>
 
     <!--删除记录-->
@@ -34,16 +34,19 @@
     <!--根据用户id查询列表-->
     <select id="findByCondition" resultType="com.ycj.ledger.domain.ConsumeRecord">
         SELECT
-        id,
-        status,
-        user_id,
-        consume_money,
-        consume_date,
-        create_date,
-        update_date
-        FROM t_consume_record
+        record.id,
+        record.status,
+        record.user_id,
+        record.consume_money,
+        record.consume_date,
+        record.create_date,
+        record.update_date,
+        tuser.user_name as userName,
+        tuser.mobile as mobile
+        FROM t_consume_record record
+        LEFT JOIN t_user tuser ON tuser.id= record.user_id
         WHERE status=0
-        <if test="userId">AND user_id=#{userId}</if>
+        <if test="userId">AND record.user_id=#{userId}</if>
     </select>
 
 </mapper>
