@@ -20,12 +20,12 @@ public class ConsumeRecordController {
     ConsumeRecordService consumeRecordService;
 
     @PostMapping("/update")
-    public BaseResult update(@RequestBody ConsumeRecord record) {
+    public BaseResult update(ConsumeRecord record) {
         return consumeRecordService.update(record);
     }
 
     @PostMapping("/add")
-    public BaseResult add(@RequestBody ConsumeRecord record) {
+    public BaseResult add(ConsumeRecord record) {
         return consumeRecordService.add(record);
     }
 

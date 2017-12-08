@@ -20,6 +20,8 @@ public class ConsumeRecord {
      * 状态 0正常 1删除
      */
     private String status;
+    private String userName;
+    private String mobile;
     /**
      * 用户id
      */
@@ -49,6 +51,22 @@ public class ConsumeRecord {
      */
     @JSONField(name = "create_date", format = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 
     public String getStatus() {
         return status;
