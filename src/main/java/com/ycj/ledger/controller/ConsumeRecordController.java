@@ -1,7 +1,5 @@
 package com.ycj.ledger.controller;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import com.ycj.ledger.domain.ConsumeRecord;
 import com.ycj.ledger.result.BaseResult;
 import com.ycj.ledger.result.PageResult;
