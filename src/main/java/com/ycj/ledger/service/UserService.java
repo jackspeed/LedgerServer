@@ -25,4 +25,12 @@ public interface UserService {
      * @return
      */
     BaseResult register(User user);
+
+    /**
+     * 用户列表
+     *
+     * @param userId
+     * @return
+     */
+    BaseResult findUserList(Long userId);
 }

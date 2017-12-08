@@ -1,8 +1,11 @@
 package com.ycj.ledger.mapper;
 
 import com.ycj.ledger.domain.User;
+import org.apache.catalina.mbeans.UserMBean;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 
 /**
@@ -45,4 +48,12 @@ public interface UserMapper {
      * @return
      */
     Integer findByMobile(@Param("mobile") String mobile);
+
+    /**
+     * s
+     *
+     * @param userId
+     * @return
+     */
+    List<User> findUserList(@Param("userId") Long userId);
 }

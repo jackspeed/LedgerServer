@@ -9,6 +9,8 @@ import com.ycj.ledger.utils.EncryptUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author ycj
  * @version V1.0 <>
@@ -75,5 +77,11 @@ public class UserServiceImpl implements UserService {
             return BaseResult.error("ERROR", "注册失败");
         }
         return BaseResult.success(user);
+    }
+
+    @Override
+    public BaseResult findUserList(Long userId) {
+        List<User> userList = userMapper.findUserList(userId);
+        return BaseResult.success(userList);
     }
 }

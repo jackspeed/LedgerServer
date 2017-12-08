@@ -29,4 +29,9 @@ public class UserController {
     BaseResult register(@RequestBody User user) {
         return userService.register(user);
     }
+
+    @GetMapping("/findUserList")
+    BaseResult findUserList(Long userId) {
+        return userService.findUserList(userId);
+    }
 }
