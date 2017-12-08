@@ -1,0 +1,32 @@
+server:
+  port: 9999
+  context-path: /ledger
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123
+    url: jdbc:mysql://localhost:3306/ledger?useSSL=false
+
+logging:
+  file: logs/spring-boot-logging.log
+  level:
+    com:
+      ycj:
+        ledger:
+          mapper: debug
+
+mybatis:
+  type-aliases-package: com.ycj.ledger.domain
+  mapper-locations: classpath*:/mapper/*.xml
+  configuration:
+     cache-enabled: true
+     mapUnderscoreToCamelCase: true
+pagehelper:
+  helper-dialect: mysql
+  reasonable: false
+  support-methods-arguments: true
+  params: count=countSql
+
+
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ycj.ledger.mapper.ConsumeRecordMapper">
+
+    <!--更新-->
+    <update id="update" parameterType="com.ycj.ledger.domain.ConsumeRecord">
+        UPDATE t_consume_record
+        SET
+        <if test="userId!=null">user_id = #{userId},</if>
+        <if test="status!=null">status = #{status},</if>
+        <if test="consumeDate!=null">consume_date = #{consumeDate},</if>
+        <if test="createDate!=null">create_date= #{createDate},</if>
+        <if test="consumeMoney!=null">consume_money = #{consumeMoney},</if>
+        update_date = NOW()
+        WHERE id = #{id}
+    </update>
+
+    <!--插入记录-->
+    <insert id="add" parameterType="com.ycj.ledger.domain.ConsumeRecord">
+        INSERT INTO t_consume_record (id, user_id, status, consume_date, consume_money,create_date)
+        VALUES (#{id},#{userId},#{status},#{consumeDate},#{consumeMoney},NOW())
+    </insert>
+
+    <!--删除记录-->
+    <delete id="deleteById">
+        UPDATE   t_consume_record
+        SET status=1,
+        update_date=NOW()
+        WHERE id = #{id}
+    </delete>
+
+    <!--根据用户id查询列表-->
+    <select id="findByCondition" resultType="com.ycj.ledger.domain.ConsumeRecord">
+        SELECT
+        id,
+        status,
+        user_id,
+        consume_money,
+        consume_date,
+        create_date,
+        update_date
+        FROM t_consume_record
+        WHERE status=0
+        <if test="userId">AND user_id=#{userId}</if>
+    </select>
+
+</mapper>
