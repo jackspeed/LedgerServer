@@ -49,4 +49,11 @@ public interface ConsumeRecordMapper {
      */
     Page<ConsumeRecord> findByCondition(@Param("userId") Long userId);
 
+    /**
+     * id 查询详情
+     *
+     * @param id
+     * @return
+     */
+    ConsumeRecord findById(@Param("id") Long id);
 }

@@ -34,6 +34,11 @@ public class ConsumeRecordController {
         return consumeRecordService.deleteById(id);
     }
 
+    @GetMapping("/findById")
+    public BaseResult findById(Long id) {
+        return consumeRecordService.findById(id);
+    }
+
     @GetMapping("/findByCondition")
     public PageResult findByCondition(Integer pageNo, Integer pageSize, Long userId) {
         return consumeRecordService.findByCondition(pageNo, pageSize, userId);

@@ -39,9 +39,17 @@ public interface ConsumeRecordService {
 
     /**
      * 条件查询
-     *
+     * @param pageNo
+     * @param pageSize
      * @param userId
      * @return
      */
     PageResult findByCondition(Integer pageNo, Integer pageSize, Long userId);
+
+    /**
+     * findById
+     * @param id
+     * @return
+     */
+    BaseResult findById(Long id);
 }

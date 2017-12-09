@@ -61,4 +61,13 @@ public class ConsumeRecordServiceImpl implements ConsumeRecordService {
         Page<ConsumeRecord> pages = consumeRecordMapper.findByCondition(userId);
         return new PageResult(pages);
     }
+
+    @Override
+    public BaseResult findById(Long id) {
+        ConsumeRecord record = consumeRecordMapper.findById(id);
+        if (record == null) {
+            return BaseResult.notFound();
+        }
+        return BaseResult.success(record);
+    }
 }
