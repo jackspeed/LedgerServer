@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ycj.ledger.mapper.UserGroupMapper">
+    <!--更新-->
+    <update id="update" parameterType="com.ycj.ledger.domain.UserGroup">
+        UPDATE t_user_group
+        SET
+        <if test="userId!=null">user_id = #{userId},</if>
+        <if test="status!=null">status = #{status},</if>
+        <if test="groupId!=null">group_id = #{groupId},</if>
+        <if test="groupName!=null">group_name = #{groupName},</if>
+        <if test="createDate!=null">create_date= #{createDate},</if>
+        update_date = NOW()
+        WHERE id = #{id}
+    </update>
+
+    <!--插入记录-->
+    <insert id="add" parameterType="com.ycj.ledger.domain.UserGroup">
+        INSERT INTO t_user_group (id, user_id, status, group_id, group_name,create_date)
+        VALUES (#{id},#{userId},0,#{groupId},#{groupName},NOW())
+    </insert>
+
+    <!--删除记录-->
+    <delete id="deleteById">
+        UPDATE   t_user_group
+        SET status=1,
+        update_date=NOW()
+        WHERE id = #{id}
+    </delete>
+
+    <!--根据用户id查询列表-->
+    <select id="findByCondition" resultType="com.ycj.ledger.domain.UserGroup">
+        SELECT
+        record.id,
+        record.status,
+        record.user_id,
+        record.group_id,
+        record.group_name,
+        record.create_date,
+        record.update_date,
+        FROM t_user_group record
+        WHERE status=0
+        <if test="userId">AND record.group_name like #{searchKey}</if>
+    </select>
+
+</mapper>
