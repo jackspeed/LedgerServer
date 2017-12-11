@@ -45,8 +45,24 @@
         tuser.mobile as mobile
         FROM t_consume_record record
         LEFT JOIN t_user tuser ON tuser.id= record.user_id
-        WHERE status=0
+        WHERE record.status=0
         <if test="userId">AND record.user_id=#{userId}</if>
     </select>
 
+    <!--根据id查询详情-->
+    <select id="findById" resultType="com.ycj.ledger.domain.ConsumeRecord">
+        SELECT
+        record.id,
+        record.status,
+        record.user_id,
+        record.consume_money,
+        record.consume_date,
+        record.create_date,
+        record.update_date,
+        tuser.user_name as userName,
+        tuser.mobile as mobile
+        FROM t_consume_record record
+        LEFT JOIN t_user tuser ON tuser.id= record.user_id
+        WHERE record.status=0 AND record.id=#{id}
+    </select>
 </mapper>
