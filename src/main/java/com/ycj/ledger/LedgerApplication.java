@@ -2,6 +2,8 @@ package com.ycj.ledger;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 /**
  * @author ycj
@@ -15,3 +17,11 @@ public class LedgerApplication {
 		SpringApplication.run(LedgerApplication.class, args);
 	}
 }
+
+
+//public class LedgerApplication  extends SpringBootServletInitializer {
+//	@Override
+//	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+//		return application.sources(LedgerApplication.class);
+//	}
+//}
